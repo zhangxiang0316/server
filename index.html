@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务入口平台</title>
+    <link rel="icon" href="static/img/favicon.ico">
+    <link rel="stylesheet" href="static/css/reset.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="static/config/config.js"></script>
+    <script src="static/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <div class="container_name">
+            <img src="static/img/login-logo.png" width="60px" alt="logo"/>
+            <h1>GT.Ex</h1>
+            <h1>服务入口平台</h1>
+        </div>
+        <div class="form_data">
+            <div class="form">
+                <div class="title-container">
+                    <div class="title_name"> 欢迎来到服务入口平台</div>
+                    <div style="flex: 1">
+                        <transition name="bounce">
+                            <div v-show="!showInput">
+                                <img class="search_img" src="./static/img/search.png" @mouseover="showInput=true">
+                            </div>
+                        </transition>
+                        <transition name="bounce">
+                            <input class="input_name" v-focus v-show="showInput" @mouseout="showInput=false"
+                                   v-model="inputText" placeholder="请输入机构名称"/>
+                        </transition>
+                    </div>
+                </div>
+                <div class="item" v-for="item in showList" :key="item.path" @click="window.open(item.path)">
+                    <span v-show-tips="{length:10,tipName:item.name}">{{item.name}}</span>
+                    <img class="img" src="static/img/jiantou.svg" alt="箭头"/>
+                </div>
+            </div>
+        </div>
+        <div class="footer-tip">
+            Copyright © 2019 北京启迪区块链科技发展有限公司 | 备案序号：京ICP备19007786号
+        </div>
+    </div>
+</div>
+</body>
+<script src="static/js/index.js"></script>
+</html>
